@@ -1,41 +1,39 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from './screens/LoginScreen';
+import SignUp from './screens/SignUpScreen';
 import HomeScreen from './screens/HomeScreen';
-import Header from './components/Header';
-import { View } from 'react-native';
 import Intro from './components/Intro';
-// import ProfileScreen from './screens/ProfileScreen';
-// import MatchScreen from './screens/MatchScreen';
+import TermsScreen from './screens/TermsScreen';
 
 const Stack = createStackNavigator();
 
 const App = () => {
-  const handleMenuPress = () => {
-    console.log('Menu button pressed');
-    // 여기에 메뉴 버튼을 눌렀을 때의 동작을 정의하세요
-  };
   return (
-    <>
-      <Intro />
-      <View>
-        {/* <Header
-          title='My App'
-          onMenuPress={handleMenuPress}
-        /> */}
-      </View>
-      {/* <NavigationContainer>
-        {/* <Stack.Navigator initialRouteName='Login'>
+    <NavigationContainer>
+      <Stack.Navigator>
         <Stack.Screen
-          name='Login'
-          component={LoginScreen}
+          name='Intro'
+          component={Intro}
+          options={{ headerShown: false }} // Intro 스크린의 헤더 숨기기
         />
-      </Stack.Navigator> 
-
-        <HomeScreen />
-      </NavigationContainer> */}
-    </>
+        <Stack.Screen
+          name='TermsScreen'
+          component={TermsScreen}
+          options={{ headerShown: false }} // SignUp 스크린의 헤더 숨기기
+        />
+        <Stack.Screen
+          name='SignUp'
+          component={SignUp}
+          options={{ headerShown: false }} // SignUp 스크린의 헤더 숨기기
+        />
+        <Stack.Screen
+          name='Home'
+          component={HomeScreen}
+          options={{ headerShown: false }} // Home 스크린의 헤더 숨기기
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
